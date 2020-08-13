@@ -1,0 +1,47 @@
+
+body{
+    background:rgb(50,205,50); /* Beccapurple */
+    width: 100%;
+    height: auto;
+	margin: 0;
+}
+.login{
+    display: block;
+    position: absolute;
+     top: 150px;
+     width: fit-content;
+     height: fit-content;
+     margin-left: 40%;
+     padding: 5% 5% 5%;
+     text-align: center;
+     align-content: center;
+     background-color:whitesmoke;
+     box-shadow: 5px 5px 5px black;
+     
+ }
+#login_submit_btn{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+@media (min-width: 480px){
+    .login {
+        padding: 2.5rem;
+    }
+}
+
+.alert{
+    text-align: center;
+    padding: 10px;
+    color: red;
+    display: none
+}
