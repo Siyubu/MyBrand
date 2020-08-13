@@ -1,0 +1,27 @@
+body{
+    background-color: #19058d;
+	margin: 0;
+}
+h1,h3,h4{
+    font-family: 'Caveat', cursive;
+    display: block;
+    color:white;
+    width:80%;
+}
+h4{
+    color: cyan;
+     margin-left: 5%;
+}
+label{
+    color: white;
+}
+#submit_created_party{
+    background: rgb(50,205,50);
+    width: 90px;
+    height: 30px;
+    padding: 1.5px 1.5px 1.5px;
+}
+fieldset{
+   padding: 2%, 2%,2%;
+    width: 50%;
+}
