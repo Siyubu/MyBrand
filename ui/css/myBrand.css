@@ -1,0 +1,33 @@
+:root {
+    --main-white: #f0f0f0;
+    --main-red: #be3144;
+    --main-blue: #45567d;
+    --main-gray: #303841;
+    --main-black: #000000;
+}
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--main-black);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+.nav-list {
+    display: flex;
+    margin-right: 2rem;
+}
+ul {
+    list-style: none;
+}
+li {
+    display: list-item;
+    margin: 0 35px;
+}
+a {
+    text-decoration: none;
+    color: var(--main-white);
+}
