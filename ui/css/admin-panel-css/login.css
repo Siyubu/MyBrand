@@ -1,6 +1,6 @@
 
 body{
-    background:rgb(50,205,50); /* Beccapurple */
+    background:rgb(220, 220, 220); /* Beccapurple */
     width: 100%;
     height: auto;
 	margin: 0;
@@ -15,12 +15,13 @@ body{
      padding: 5% 5% 5%;
      text-align: center;
      align-content: center;
-     background-color:whitesmoke;
+     color:whitesmoke;
+     background-color: black;
      box-shadow: 5px 5px 5px black;
      
  }
 #login_submit_btn{
-    background-color: #4CAF50;
+    background-color: #180394;
     border: none;
     color: white;
     padding: 15px 40px;

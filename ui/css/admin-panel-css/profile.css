@@ -1,0 +1,83 @@
+
+body{
+    background:rgb(220, 220, 220); /* Beccapurple */
+    width: 100%;
+    height: auto;
+	/* margin: 0; */
+}
+.profile{
+    display: block;
+    position: absolute;
+     top: 100px;
+     width: 100%;
+     height: fit-content;
+     margin:0.3rem;
+     padding:5% 5% 5%;
+     text-align: center;
+     align-content: center;
+     font-size: 1.8rem;
+     color:whitesmoke;
+     background-color: black;
+     box-shadow: 5px 5px 5px black;
+     
+ }
+ input {
+     width: 80%;
+ }
+ .profile-image {
+    height: calc(100% - 3.8rem);
+    width: 100%;
+    padding-bottom: 20px;
+    margin: 2px;
+    border-radius: 1.5%;
+}
+#login_submit_btn{
+    background-color: #180394;
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.back > a {
+    color:blue;
+}
+
+.alert{
+    text-align: center;
+    padding: 10px;
+    color: red;
+    display: none
+}
+
+@media only screen and (min-width: 728px){
+
+    .profile {
+        width: fit-content;
+        margin: 4rem;
+        font-size: 2.5rem;
+    }
+    .profile-image {
+        width: 80%;
+
+    }
+ 
+}
+@media only screen and (min-width: 1000px){
+
+    .profile {
+        width: 15%;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        margin-left: 35%;
+        top: 100px;
+        padding:5% 5% 2.5%;
+
+    }
+ 
+}

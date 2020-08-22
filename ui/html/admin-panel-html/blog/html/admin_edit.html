@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang= "en">
+    <head>
+         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Andela Bootcamp Allocation Project </title>
+        <link href="../../../../css/admin-panel-css/create_blog.css" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>      
+<h1>Detail Form for Creating a Blog</h1>
+        <form action="create-blog">
+            <fieldset>
+                <legend><h4>Create a blog :</h4></legend>
+
+                <label for="blog-title">Title of Article</label>
+                <input id="blog-title" type="text" name="name" placeholder="Title of article to edit"><br><br>
+                
+                <label for="blog_image">The Article Image </label>
+                <input id="blog_image" type="file" name="image" placeholder="image"><br><br>
+                
+                <label for="blog_file">body</label><br>
+                <textarea id="blog_file" name="message" rows="5" cols="30">Body of article intended to be edited.</textarea><br><br>
+            
+                
+                <label for="submit_created_blog">Submit the Article's Details</label>
+                <button id="submit_created_blog" type="submit" onclick="uploadImage()">Submit</button>
+                <br>
+            </fieldset>
+        </form>
+        
+
+    </body>
