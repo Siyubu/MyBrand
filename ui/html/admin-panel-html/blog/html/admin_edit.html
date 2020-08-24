@@ -5,10 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Andela Bootcamp Allocation Project </title>
         <link href="../../../../css/admin-panel-css/create_blog.css" rel="stylesheet" type="text/css">
+        <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     </head>
     
-    <body>      
-<h1>Detail Form for Creating a Blog</h1>
+    <body>  
+        <div class="content">
+        
+        <h1 id="create-blog">Detail Form for Editing a Blog</h1>
         <form action="create-blog">
             <fieldset>
                 <legend><h4>Create a blog :</h4></legend>
@@ -28,6 +31,10 @@
                 <br>
             </fieldset>
         </form>
-        
+        </div>
+        <script>
+            CKEDITOR.replace( 'message' );
+        </script>
 
     </body>
+    </html>
