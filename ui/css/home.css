@@ -16,6 +16,7 @@
     background-image: url('../images/soso.JPG');
     background-repeat: no-repeat;
     background-size:100% 100%;
+     background-position: center ;
 }
 
 #introduction{
@@ -31,9 +32,6 @@
 #profes{
     color: rgb(6, 238, 246);
 }
-
-
-
 
 @media only screen and (min-width: 728px){
     .profession {
@@ -52,6 +50,9 @@
 
     #introduction{
         font-family:Arial, Helvetica, sans-serif ;
-        font-size: 13px;
+        font-size: 1.2rem;
+        right: 30%;
+        bottom: 43%;
+        line-height: 0.8rem;
     }
 }
