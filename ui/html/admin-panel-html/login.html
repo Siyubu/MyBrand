@@ -23,7 +23,7 @@
             </nav>
         <div class="login" id="login-form">
         <h4>Log in into your Account</h4>
-        <form action="login" id="login">
+        <form action="login" id="log">
            <label for="user_email">Enter Your Email</label><br>
                 <input id="user_email" type="text" name="user_email" placeholder="abc@gmail.com"><br><br>
         
@@ -31,13 +31,19 @@
                 <input id="user_password" type="password" name="user_email" placeholder="**********"><br><br>
             
             <br>
+            <div class="alert"><strong>wrong credentials</strong></div>
 
-          <input id="login_submit_btn" class="btn" type=button  onClick="location.href='bloggers.html'" value="Login">
+          <!-- <input id="login_submit_btn" class="btn" type=button  value="Login"> -->
+          <button id="login_submit_btn" type="submit" >Login</button>
 
           <br>
-          <div class="alert"><strong>wrong credentials</strong></div>
         </form>
             <br> 
         </div>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+        <script src='../../../server/models/login.js'></script>
     </body>
 </html>
