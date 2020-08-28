@@ -21,6 +21,9 @@ h1{
 .name{
     color: rgb(62, 3, 114);
 }
+.subject{
+    margin-left: 17.3rem;
+}
 .intro{
     display: block;
     height: 0.3rem;
