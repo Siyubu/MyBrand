@@ -1,0 +1,29 @@
+:root {
+    --main-white: #f0f0f0;
+    --main-red: #be3144;
+    --main-blue: #45567d;
+    --main-gray: #303841;
+    --main-black: #000000;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/soso.JPG');
+    background-size: cover;
+}
+
+#introduction{
+    position: absolute;
+    right: 28%;
+    bottom: 20%;
+    width: 200px;
+    text-align: center;
+}
+#profes{
+    color: red;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang= "en">
+    <head>
+         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Andela Bootcamp Allocation Project </title>
+        <link href="../css/create_blog.css" rel="stylesheet" type="text/css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+         <script src='../js/create_blog.js'></script>
+    </head>
+    
+    <body>      
+<h1>Detail Form for Creating a Blog</h1>
+        <form action="create-blog">
+            <fieldset>
+                <legend><h4>Create a blog :</h4></legend>
+
+                <label for="blog-title">Title of Article</label>
+                <input id="blog-title" type="text" name="name" placeholder="ICT  in Rwanda"><br><br>
+                
+                <label for="blog_image">The Article Image </label>
+                <input id="blog_image" type="file" name="image" placeholder="image"><br><br>
+                
+                <label for="blog_file">The Article .html file</label>
+                <input id="blog_file" type="file" name="blog_file" placeholder=".html"><br><br>
+                
+                <label for="submit_created_blog">Submit the Article's Details</label>
+                <!-- <input id="submit_created_blog" class="submit" type="submit" onClick="uploadImage"> -->
+                <button id="submit_created_blog" type="submit" onclick="uploadImage()">Submit</button>
+                <br>
+            </fieldset>
+        </form>
+        
+
+    </body>
