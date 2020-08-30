@@ -71,8 +71,7 @@ function uploadImage(){
       // print the image url  
        console.log(downloadURL); 
        selectedImageUrl=downloadURL;
-     // document.getElementById('submit_image').removeAttribute('disabled'); 
-      //document.querySelector('#imgUpload').setAttribute('src',selectedImageUrl)
+
     }); 
   });
 }
