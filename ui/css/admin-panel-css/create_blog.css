@@ -52,6 +52,14 @@ textarea{
     margin-left: 20px;
 }
 
+#error_message{
+    margin-bottom: 20px;
+    padding: 0px;
+    background:#fe8b8e ;
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+
 @media only screen and (min-width: 728px){
 
     form{

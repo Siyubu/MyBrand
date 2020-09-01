@@ -21,9 +21,11 @@ var firebaseConfig = {
     var error_message = document.getElementById("error_message");
     if(validate(name,subject,email,message,error_message)){
         storeContactIntoDatabase(e,name,subject,email,message);
-        alert("Form Submitted and data saved Successfully!");
+        error_message.style.background="blue";
+        error_message.style.padding = "10px";
+        error_message.innerHTML = "Form Submitted and data saved Successfully!";
+
         document.getElementById("contact-form").reset();
-        error_message.style.padding = "0px"; 
 
     }
 }
