@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang= "en">
+    <head>
+         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Andela Bootcamp Allocation Project </title>
+
+        <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+        <link href="../../css/myBrand.css" rel='stylesheet'  type='text/css'>
+        <link href="../../css/admin-panel-css/create_blog.css" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>   
+        <nav id="navbar" class="nav">
+            <ul class="nav-list">
+                <li><a href="./bloggers.html">Dashboard</a></li>
+                <li><a href="./Admin_create_blog.html">Create Blogs</a></li>
+                <li><a href="./Admin_queries.html">Queries</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li><a href='../home.html'><strong>Back to home</strong> </a></li>
+                <li><a href="#">LogOut</a></li>
+                </ul>
+            </nav>
+<div class="content">
+
+<h1 id="create-blog">Detail Form for Creating a Blog</h1>
+        <form action="create-blog" class="contact-form" id="blog-form">
+            <fieldset>
+                <legend><h4>Create a blog: </h4></legend>
+                <div id="error_message"></div>
+
+                <label for="blog-title">Title of Article</label>
+                <input id="blog-title" type="text" name="name" placeholder="ICT  in Rwanda" required><br><br>
+                
+                <progress value="0" id="uploader-image" max="100">0%</progress><br>
+                <label for="blog_image">The Article Image </label>
+                <input id="blog_image" type="file" name="image" placeholder="image" required accept="image/*" 
+                /><br><br>
+                
+                
+                <label for="blog_body">body</label><br>
+                <textarea id="blog_body" name="message" rows="5" cols="30" required placeholer="Your article's body."></textarea><br>
+            
+                
+                <label for="submit_created_blog">Submit the Article's Details</label><br>
+                <button id="submit_created_blog" type="submit" onclick="storeIntoDatabase(event)">Submit</button>
+                <br>
+            </fieldset>
+        </form>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script> 
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="../../js/admin-js/create_blog.js"></script>
+        <!-- <script> 
+        CKEDITOR.replace( 'message' );
+         </script> -->
+
+    </body>
+    </html>

@@ -6,21 +6,63 @@
         <title>website of Solange Iyubu</title>
 
         <link href='../css//myBrand.css' rel='stylesheet' type='text/css'>
-        <link href='../css/about.css' rel='stylesheet' type='text/css'>
+        <link href="../css/contact.css" rel="stylesheet" type="text/css">
         
     </head>
     <body>
         <nav id="navbar" class="nav">
             <ul class="nav-list">
                 <li><a href="./home.html">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="./about.html">About</a></li>
                 <li><a href="./portofilio.html">Portofilio</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="# contact">Contact</a></li>
-                <li><a href="#">Admin</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="./admin-panel-html/login.html">Admin</a></li>
                 </ul>
             </nav>
-            <section id="contact">
+            <section id="contact" class='contact'>
+
+                <div id="title" class='title'>
+                    <h1 id='header' class='header'><h2><strong>Leave me a message, It is pleasure
+                        for me to hear from people</strong></h2>
+                    </div>
+
+                <div class="login" id="login-form">
+                    <div id="error_message"></div>
+                    <form action="contact" id="contact-form" > 
+                        <div class='form-group'>    
+                        <label for="user_name">Full Name</label>
+                        <input id="user_name" class='form-control' type="text" name="user_name" required  placeholder="Nzamurera Pathos"><br>
+                        </div>
+
+                        <div class='form-group'>
+                            <label for="subbject">Subject</label>
+                            <input id="subject" class='form-control' type="text" name="subject" required placeholder="Website not responsible"><br>
+
+                        </div>
+
+                        <div class='form-group'>
+                            <label for="user_email">Email</label>
+                            <input id="user_email" class='form-control' type="text" name="user_email" required placeholder="soso@ymail.com"><br>
+
+                        </div>
+                           
+                        <div class='form-group'>
+                            <label for="user_message">Message</label>
+                            <textarea id="user_message" name="message" rows="5" cols="30" required>Your message.</textarea><br><br>
+                    </div>
+
+                    <div class='form-group'>
+                        <button id="login_submit_btn" class='submit-button' type="submit" onclick="submitForm(event)" >Send</button>
+                    </div> 
+                    </form>
+                        <br> 
+                    </div>
                 </section>
+                <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+                 <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+                 <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+                <script src="../js/contact.js"></script>
             </body>
             </html>

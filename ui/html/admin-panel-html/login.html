@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang= "en">
+    <head>
+         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Andela Bootcamp Allocation Project</title>
+        <link href='../../css/myBrand.css' rel='stylesheet' type='text/css'>
+        <link href="../../css/admin-panel-css/login.css" rel="stylesheet" type="text/css">
+        
+         
+    </head>
+    
+    <body>
+        <nav id="navbar" class="nav">
+            <ul class="nav-list">
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../portofilio.html">Portofilio</a></li>
+                <li><a href="../blog.html">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="#login-form">Admin</a></li>
+                </ul>
+            </nav>
+        <div class="login" id="login-form">
+        <h4>Log in into your Account</h4>
+        <form action="login" id="log">
+           <label for="user_email">Enter Your Email</label><br>
+                <input id="user_email" type="text" name="user_email" placeholder="abc@gmail.com"><br><br>
+        
+        <label for="user_password">Enter Your Password</label><br>
+                <input id="user_password" type="password" name="user_email" placeholder="**********"><br><br>
+            
+            <br>
+            <div class="alert"><strong>wrong credentials</strong></div>
+
+          <!-- <input id="login_submit_btn" class="btn" type=button  value="Login"> -->
+          <button id="login_submit_btn" type="submit" >Login</button>
+
+          <br>
+        </form>
+            <br> 
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+        <script src='../../js/login.js'></script>
+    </body>
+</html>

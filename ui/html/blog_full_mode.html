@@ -1,0 +1,57 @@
+<html lang= "en">
+    <head>
+         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Andela Bootcamp Allocation Project</title>
+        <link href="../css/blog_full_mode.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+        <div id="blogFullMode">
+           
+            </div>
+            
+             
+            
+            <div id="comment-form" class="comment">
+                <label for="user_message">Leave a comment</label>
+                <textarea id="comment"  name="message" rows="5" cols="30">What is your idea about this blog.</textarea>
+                <br />
+                <label for="name">Name</label>
+                <input id="name"  type="text" placeholder="your name please">
+                <br />
+                <div id='btn' class="icon">
+                <button id="edit" class='edit  icon'  style="font-size:14px" onclick="comment(event)">Comment
+                     <i class="fa fa-comment-o">
+                        <span id='comment-number' class="icon-number">
+                        </span>
+                    </i>
+                    </button>
+                <button id='like' class='like  icon'style="font-size:14px" onclick="like(event)">Like 
+                    <i class="fa fa-thumbs-up">
+                        <span id='like-icon-number' class="icon-number">
+                            </span>
+                        </i>
+                </button>
+                <button id='share' class='share  icon'style="font-size:14px" onclick="share(event)">Share 
+                    <i class="fa fa-share-square-o">
+                        <span id='share-icon-number' class="icon-number">
+                        </span>
+                    </i>
+                </button>
+            </div>
+        </div>
+            <div id="blog-comment">
+                </div>
+                
+            <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+                        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                        <script src="../js/blog_full_mode.js"></script>
+    </body>
+</html>

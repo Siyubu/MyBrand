@@ -8,7 +8,7 @@
 
 body{
     background: var(--main-gray);
-    color: var(--main-white);
+    color: rgb(192, 186, 186);
 }
 .about{
     display: flex;
@@ -21,6 +21,7 @@ body{
 .profession{ 
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin: 10px;
 }
 
@@ -40,17 +41,18 @@ body{
 
 .left{
     background: var(--main-black);
-    padding-left: 59px;
-    margin: 10px;
+    padding-left: 29px;
+    margin: 7px;
     width: 200px;
+    height: auto;
     border-radius: 25px;
     
 }
 .right{
     background: var(--main-black); 
-    padding-left: 39px;
-    margin: 10px;
-    width: 566px;
+    padding-left: 29px;
+    margin: 7px;
+    width: 100%;
     height: auto;
     border-radius: 25px;
 }
@@ -60,24 +62,32 @@ body{
 h3{
     color:#5e9516;
 }
-/* .title:after {
-    content: '';
-    width: 100%;
-    border-bottom: solid 1px #fff;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    z-index: 1;
-} */ 
-@media only screen and (max-width: 728px){
+ 
+@media only screen and (min-width: 728px){
     .profession {
         font-size: 28px;
-        flex-direction: row;
+        /* flex-direction: row; */
     }
-
+    .left{
+        padding-left: 59px;
+        margin: 10px; 
+        width: 300px; 
+    }
+.right{
+    padding-left: 39px;
+    margin: 10px;
+    width: 566px;
+}
     }
     @media only screen and (min-width: 1000px)
     {
-     
+        .profession {
+            font-size: 16px;
+             flex-direction: row; 
+        }
+        
+        .left{
+            width: 200px; 
+        }
     
     }
