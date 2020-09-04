@@ -31,9 +31,7 @@ document.addEventListener("DOMContentLoaded",event=>{
 
     function selectElement(){
         var id= urlParams.get('edit');
-        console.log("&&&&&&&&&&&&&&&&& "+ id);
         firebase.database().ref('blogs/'+id).on('value', function(snapshot){
-            console.log(snapshot.val());
                 document.getElementById("blog-title").value= snapshot.val().title;
                  editor.setData(snapshot.val().body);
                  storedImageUrl=snapshot.val().image;
@@ -109,7 +107,7 @@ function updateElement(e){
     })
        
         console.log("Saved in database sucessfylly");
-        error_message.style.background="rgb(50,205,50)git";
+        error_message.style.background="rgb(50,205,50)";
         error_message.style.padding = "10px";
         error_message.innerHTML = "Form Submitted and data updated Successfully!";
     }

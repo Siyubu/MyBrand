@@ -8,64 +8,50 @@
     </head>
     
     <body>
-            <div class="image">
-            <img  id="blog-image"  class="blog-image"  src="../images/be you.JPG"  alt="Blog">
+        <div id="blogFullMode">
+           
             </div>
-            <div class='content'>
-            <p>
-                    Your options here include your network, job fairs, and job boards. 
-                    It’s important to keep an open mind here and explore any opportunities that come your way.
-                    Many companies only keep junior developers that “graduated” from an internship, 
-                    so an internship is definitely a viable first option that comes with less pressure than signing up 
-                    as a full-fledged developer from the get-go. <br>
-                    Your first interview probably won’t be the one that lands the job. 
-                    Getting a job in IT isn’t as easy as people like to make it out to be, 
-                    even with the right background and preparation. If you’re certain about this path, 
-                    keep at it and try to learn from any rejections along the way. Also, remember the
-                    “engineer” part of the title: over the long run, you should make sure you can look 
-                    at a problem at a conceptual level first, solve it architecturally, and only then implement the code. 
-                    This is easier said than done, but having an engineer’s mindset makes a huge difference in the long run. 
-            </p>
-
-            <p>
-                Your options here include your network, job fairs, and job boards. 
-                It’s important to keep an open mind here and explore any opportunities that come your way.
-                Many companies only keep junior developers that “graduated” from an internship, 
-                so an internship is definitely a viable first option that comes with less pressure than signing up 
-                as a full-fledged developer from the get-go. <br>
-                Your first interview probably won’t be the one that lands the job. 
-                Getting a job in IT isn’t as easy as people like to make it out to be, 
-                even with the right background and preparation. If you’re certain about this path, 
-                keep at it and try to learn from any rejections along the way. Also, remember the
-                “engineer” part of the title: over the long run, you should make sure you can look 
-                at a problem at a conceptual level first, solve it architecturally, and only then implement the code. 
-                This is easier said than done, but having an engineer’s mindset makes a huge difference in the long run. 
-        </p>
-
-        <p>
-                Your options here include your network, job fairs, and job boards. 
-                It’s important to keep an open mind here and explore any opportunities that come your way.
-                Many companies only keep junior developers that “graduated” from an internship, 
-                so an internship is definitely a viable first option that comes with less pressure than signing up 
-                as a full-fledged developer from the get-go. <br>
-                Your first interview probably won’t be the one that lands the job. 
-                Getting a job in IT isn’t as easy as people like to make it out to be, 
-                even with the right background and preparation. If you’re certain about this path, 
-                keep at it and try to learn from any rejections along the way. Also, remember the
-                “engineer” part of the title: over the long run, you should make sure you can look 
-                at a problem at a conceptual level first, solve it architecturally, and only then implement the code. 
-                This is easier said than done, but having an engineer’s mindset makes a huge difference in the long run. 
-        </p>
+            
+             
+            
+            <div id="comment-form" class="comment">
+                <label for="user_message">Leave a comment</label>
+                <textarea id="comment"  name="message" rows="5" cols="30">What is your idea about this blog.</textarea>
+                <br />
+                <label for="name">Name</label>
+                <input id="name"  type="text" placeholder="your name please">
+                <br />
+                <div id='btn' class="icon">
+                <button id="edit" class='edit  icon'  style="font-size:14px" onclick="comment(event)">Comment
+                     <i class="fa fa-comment-o">
+                        <span id='comment-number' class="icon-number">
+                        </span>
+                    </i>
+                    </button>
+                <button id='like' class='like  icon'style="font-size:14px" onclick="like(event)">Like 
+                    <i class="fa fa-thumbs-up">
+                        <span id='like-icon-number' class="icon-number">
+                            </span>
+                        </i>
+                </button>
+                <button id='share' class='share  icon'style="font-size:14px" onclick="share(event)">Share 
+                    <i class="fa fa-share-square-o">
+                        <span id='share-icon-number' class="icon-number">
+                        </span>
+                    </i>
+                </button>
             </div>
-
-            <p class='comment'><strong> click on comment button to send your comment</strong></p>
-
-            <div id='btn' class="icon">
-                <label for="user_message">Comment</label>
-                <textarea  name="message" rows="5" cols="30">What is your idea about this blog.</textarea><br>
-                <button class='edit  icon' style="font-size:14px">Comment <i class="fa fa-comment-o"></i></button>
+        </div>
+            <div id="blog-comment">
                 </div>
-               
-  
+                
+            <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+                        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                        <script src="../../server/models/blog_full_mode.js"></script>
     </body>
 </html>

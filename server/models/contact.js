@@ -14,6 +14,7 @@ var firebaseConfig = {
 
   function submitForm(e){
     e.preventDefault();
+  
     var name = document.getElementById("user_name").value;
     var subject = document.getElementById("subject").value;
     var email = document.getElementById("user_email").value;
@@ -48,7 +49,7 @@ function validate(name,subject,email,message,error_message){
       error_message.innerHTML = text;
       return false;
     }
-    if(email.indexOf("@") == -1 || email.length < 6){
+    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email ))){
       error_message.style.padding = "10px"; 
       text = "Please Enter valid Email";
       error_message.innerHTML = text;
@@ -86,3 +87,4 @@ function validate(name,subject,email,message,error_message){
 
 
 }
+
