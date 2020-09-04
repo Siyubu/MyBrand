@@ -1,17 +1,35 @@
+.title{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    padding: 0.3rem 0.3rem;
+}
+
 .image{
     padding-left: 50px;
     padding-right: 50px;
 
 }
 .content{
-    padding: 20px;
-    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 170px 20px 170px;
+    /* padding-top: 10px; */
 }
 img {
-    max-width: 100%;
+    max-width: 80%;
     display: block;
-    height: auto;
+    height: 550px;
     margin: 0 auto;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    color: rgb(92, 81, 81);
+    font-size: 1.125rem;
 }
 
 .blog-image{
@@ -23,7 +41,7 @@ img {
 
 #btn{
     display: flex;
-    Justify-content: left;
+    Justify-content:center;
     margin: 0 -5px; 
 }
 .icon{
@@ -37,11 +55,30 @@ img {
     margin: 4px 10px;
     border-radius: 20%;
   }
+/* .edit {
+    background: rgb(50,205,50);
+} */
+
+.delete {
+    background: rgb(255, 0, 21);
+    margin-bottom: 30px;
+}
 .edit {
+    background: rgb(50,205,50);
+    margin-bottom: 30px;
+}
+.like {
+    background: rgb(50,205,50);
+    margin-bottom: 30px;
+}
+.share {
     background: rgb(50,205,50);
     margin-bottom: 30px;
 }
 
 .comment {
-   padding-left: 20px;
+   padding-left: 170px;
+   display: flex;
+   flex-direction: column;
+   width: 400px;
 }

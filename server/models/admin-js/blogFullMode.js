@@ -18,8 +18,6 @@ document.addEventListener("DOMContentLoaded",event=>{
       var id= urlParams.get('article');
       
       displayBlogInFull();
-    //  deleteIteme(id);
-     // updateElement();
      selectElement();
     });
 
@@ -40,28 +38,30 @@ document.addEventListener("DOMContentLoaded",event=>{
                 var title=blogs[id].title;
                 var imageurl=blogs[id].image;
                 var body=blogs[id].body;
-                   //create image
-                   var imgdiv=document.createElement('div');
-                   imgdiv.setAttribute("class","image");
+                var comment=Object.keys(blogs[id].comments);
 
-                   var img = document.createElement('img');
-                   img.src=imageurl;
-                   img.setAttribute("id","blog-image")
-                   img.setAttribute('class',"blog-image");
-                   img.alt="Blog";
-                   imgdiv.appendChild(img);
-
-                   //create Paragraph
-                   var contdiv=document.createElement('div');
-                   contdiv.setAttribute("class","content");
-                   var para = document.createElement("P"); 
-                   para.innerHTML = body;
-                   para.setAttribute('class',"blog-title");
-                   //complete link
-                   contdiv.appendChild(para);
-                   // create icons
-                  list.appendChild(imgdiv);
-                  list.appendChild(contdiv);
+                list.innerHTML=` 
+                <div class="title" >${title}</div>
+                <div class="image">
+                <img  id="blog-image"  class="blog-image"  src=${imageurl}  alt="Blog">
+                </div>
+                <div class='content'>
+                <p> ${body}</p>
+                </div>
+               `;
+        
+                for(var j=0;j<comment.length;j++){
+                    var commentKey=comment[j];
+                    var commentName=blogs[id].comments[commentKey].name;
+                    var commentBody=blogs[id].comments[commentKey].comment;
+                    document.getElementById('blog-comment').innerHTML+=`  
+                     <li class='comment'>
+                    <h5 class="name"> <strong>${commentName}</strong></h5>
+                   <p>${ commentBody}</p>
+               </li>`
+                   // console.log(commentBody);
+                }
+            
             } 
            
          /********create elements*******/
@@ -81,15 +81,13 @@ document.addEventListener("DOMContentLoaded",event=>{
         var id= urlParams.get('article');
         document.getElementById('delete').onclick=function(){
             firebase.database().ref('blogs/'+id).remove();
-            location.href = "admin_delete.html";
-           // alert("Deleted from the database")
+            location.href = "../../bloggers.html";
     }
     }
 
     function selectElement(e){
-        e.preventDefault;
+        e.preventDefault();
         var id= urlParams.get('article');
-            console.log("&&&&&&&&&&&&&&&&& "+ id);
         location.href = `admin_edit.html?edit=${id}`;
     }
 

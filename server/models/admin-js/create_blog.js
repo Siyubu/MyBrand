@@ -87,6 +87,9 @@ function storeIntoDatabase(e){
         title:title,
         image:selectedImageUrl,
         body: message,
+        comments:1,
+        likes:0,
+        shares:0
     }
 
     var updates={};
