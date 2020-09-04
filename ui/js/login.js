@@ -1,21 +1,23 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyDpSm-hBF6Ec5sb9kn6NLM3PKRxYxlpDPg",
-    authDomain: "local-allocation.firebaseapp.com",
-    databaseURL: "https://local-allocation.firebaseio.com",
-    projectId: "local-allocation",
-    storageBucket: "local-allocation.appspot.com",
-    messagingSenderId: "659131770353",
-    appId: "1:659131770353:web:b82c4d2acd1eb8d1011050",
-    measurementId: "G-1RGPFT9QBH"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  // Your web app's Firebase configuration
+ // Your web app's Firebase configuration
+ var firebaseConfig = {
+  apiKey: "AIzaSyClhpeLUDXcbzlojo163cR7OTNAFYTs8cg",
+  authDomain: "iyubu-brand.firebaseapp.com",
+  databaseURL: "https://iyubu-brand.firebaseio.com",
+  projectId: "iyubu-brand",
+  storageBucket: "iyubu-brand.appspot.com",
+  messagingSenderId: "584752376351",
+  appId: "1:584752376351:web:798876a05780cd1f9d032a",
+  measurementId: "G-M66MWXPZMR"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+//firebase.analytics();
   const firebaseDatabase= firebase.database().ref("messages");
   
 
 // listen for form submission
-document.getElementById('login').addEventListener('submit',submitForm);
-
+document.getElementById('log').addEventListener('submit',submitForm);
 
 //Submit form
 function submitForm(e){
@@ -24,12 +26,6 @@ function submitForm(e){
     var email = document.getElementById('user_email').value;
     var pswd = document.getElementById('user_password').value;
    login(email,pswd);
-
-   // reset the form after 3 seconds
-
-//    setTimeout(function(){
-//     document.getElementById("login").reset();
-// }, 7000);
 }
 
 // save to firebase
