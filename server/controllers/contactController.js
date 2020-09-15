@@ -22,4 +22,13 @@ export default class UserController {
         return res.status(500).json(err);
     }
   }
+
+  static async deleteContact(req, res) {
+    try {
+       await db.contactModel.deleteOne({ _id: req.params.id });
+      return res.status(204).send();
+    } catch (err) {
+        return res.status(404).json(err);
+    }
+  }
 }
