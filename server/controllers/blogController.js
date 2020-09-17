@@ -3,8 +3,6 @@ import db from "../config/database.js";
 export default class BlogController {
   
     static async createBlog(req, res) {
-     // console.log(db.cloudinary.uploader);
-     console.log(req.files.image);
       db.cloudinary.uploader.upload(req.files.images.path, function(result) {
   
       try 
@@ -14,13 +12,12 @@ export default class BlogController {
           body: req.body.body,
           image:result.url
         })
-         blog.save()
-        //await db.blogModel.create(req.body);
+         blog.save();
         return res.status(200).json(blog);
       } 
       catch (err) 
       {
-        return res.status(500).json(err);
+         res.status(400).send({error:"Failed to post this blog"});
       }
       
     });
@@ -30,8 +27,11 @@ export default class BlogController {
       try {
         const blogs = await db.blogModel.find({});
         return res.status(200).json(blogs);
-      } catch (err) {
-          return res.status(500).json(err);
+      } 
+      catch 
+      {
+        res.status(400)
+        res.send({ error: "No blog in the database!" })
       }
     }
 
@@ -68,9 +68,10 @@ export default class BlogController {
     static async deleteBlog(req, res) {
       try {
          await db.blogModel.deleteOne({ _id: req.params.id });
-        return res.status(204).send();
-      } catch (err) {
-          return res.status(404).json(err);
+         res.status(204).send({message:"Blog is successfuly deleted"});
+      } catch {
+        res.status(404)
+        res.send({ error: "Blog doesn't exist!" })
       }
     }
   }
