@@ -1,19 +1,42 @@
 import db from "../config/database.js";
-// import { onError, onSuccess } from "../utils/response";
+import contactValidation from "../middlewares/contact_validation.js";
 
-export default class UserController {
+
+export default class ContactController {
   static async createContact(req, res) {
-    try 
-    {
-      const created = await db.contactModel.create(req.body);
-      return res.status(200).json(created);
-    
-    } 
-    catch (err) 
-    {
-      return res.status(500).json(err);
+      console.log(req.body);
+      // res.send("Whhhhhhhhhhhh");
+    console.log("**********");
+    const auth = contactValidation(req.body);
+   
+    if (auth.error){
+       res.send({error:auth.error.details[0].message})
+
     }
+    else
+    {
+      try 
+      {
+        const created = new db.contactModel({
+        names: auth.value.names,
+        subject: auth.value.subject,
+        email: auth.value.email,
+        message: auth.value.message
+        });
+        await created.save();
+         res.status(200).json(created);
+      
+      } 
+      catch (err) 
+      {
+         res.status(500).json(err);
+      }
+
+    }
+ 
   }
+
+
   static async getContacts(req, res) {
     try {
       const contacts = await db.contactModel.find({});

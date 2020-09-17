@@ -1,26 +1,39 @@
 import db from "../config/database.js";
+import blogValidation from "../middlewares/article_validation.js";
 
 export default class BlogController {
-  
+
     static async createBlog(req, res) {
-      db.cloudinary.uploader.upload(req.files.images.path, function(result) {
+      const auth = blogValidation(req.body)
+      if (auth.error){
+        return res.send({error:auth.error.details[0].message})
+
+      }
+      else{
+        db.cloudinary.uploader.upload(req.files.images.path, function(result) {
+          console.log(auth)
   
-      try 
-      {
-        const blog = new db.blogModel({
-          title: req.body.title,
-          body: req.body.body,
-          image:result.url
-        })
-         blog.save();
-        return res.status(200).json(blog);
-      } 
-      catch (err) 
-      {
-         res.status(400).send({error:"Failed to post this blog"});
+          try 
+          {
+            
+            const blog = new db.blogModel({
+              title: auth.value.title,
+              body: auth.value.body,
+              image:result.url
+            })
+             blog.save();
+            return res.status(200).json(blog);
+          } 
+          catch (err) 
+          {
+             res.status(400).send({error:"Failed to post this blog"});
+          }
+    
+        });
+
       }
       
-    });
+      
     }
 
     static async getBlogs(req, res) {
