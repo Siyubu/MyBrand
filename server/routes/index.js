@@ -1,9 +1,13 @@
 
 import express from 'express';
+import passport from 'passport';
+import passportConf from '../passport.js';
 const router=express.Router();
 import contactRouter from "./route.js";
 import blogRouter from "./blogRoute.js"
+import userRouter from "./userRoute.js"
 
 router.use("/query", contactRouter);
-router.use("/article",blogRouter);
+router.use("/article",passport.authenticate('jwt', { session : false }),blogRouter);
+router.use("/user", userRouter);
 export default router;

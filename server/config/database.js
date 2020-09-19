@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import env from "dotenv";
 import contactModel from "../models/contactModel.js";
 import blogModel from "../models/blogModel.js";
+import userModel from "../models/userModel.js"
 import cloudinary from 'cloudinary';
 
 env.config();
@@ -25,4 +26,4 @@ db.once('open', () => {
   console.log('Mongoose connected')
 });
 
-export default { contactModel,blogModel,cloudinary};
+export default { contactModel,blogModel,userModel,cloudinary};

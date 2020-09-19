@@ -13,10 +13,11 @@ const blogSchema = new mongoose.Schema({
     type: String,
   },
 comments: {
-    type: Object,
+    type: [Object],
 },
 likes:{
-    type: Number
+    type: Number,
+    default:0
 },
 shares:{
     type: Number,
