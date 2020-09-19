@@ -1,5 +1,6 @@
 import db from "../config/database.js";
-import blogValidation from "../middlewares/article_validation.js";
+import blogValidation from "../validation/article_validation.js";
+import mongoose from "mongoose"
 
 export default class BlogController {
 
@@ -11,7 +12,7 @@ export default class BlogController {
       }
       else{
         db.cloudinary.uploader.upload(req.files.images.path, function(result) {
-          console.log(auth)
+         // console.log(auth)
   
           try 
           {
@@ -87,5 +88,43 @@ export default class BlogController {
         res.send({ error: "Blog doesn't exist!" })
       }
     }
+
+
+    static async blogComment(req, res) {
+      
+      try {
+        var comment={};
+        const blog = await db.blogModel.findOne({ _id: req.params.id })
+        var commentValue={
+          body: req.body.body,
+          name: req.body.name
+        };
+       comment[mongoose.Types.ObjectId()]=commentValue;
+        blog.comments.push(comment);
+        await blog.save()
+        res.send(blog.comments)
+    } catch {
+        res.status(404)
+        res.send({ error: "Blog doesn't exist!" })
+    }
+ 
+    }
+
+    static async bloglikes(req, res) {
+      
+      try {
+        const blog = await db.blogModel.findOne({ _id: req.params.id })
+        blog.likes+=1;
+        await blog.save()
+        res.send(blog.comments)
+    } 
+    catch {
+        res.status(404)
+        res.send({ error: "Blog doesn't exist!" })
+    }
+ 
+    }
+
+
   }
   

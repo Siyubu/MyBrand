@@ -9,6 +9,7 @@ var multipartMiddleware = multipart();
 router.get('/',BlogController.getBlogs);
 router.get('/:id',BlogController.getOneBlog);
 router.post('/create',multipartMiddleware,BlogController.createBlog);
+router.post('/comment/:id',BlogController.blogComment);
 router.delete('/:id',BlogController.deleteBlog);
 router.patch('/:id',BlogController.updateBlog)
 

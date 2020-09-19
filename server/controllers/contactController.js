@@ -1,12 +1,9 @@
 import db from "../config/database.js";
-import contactValidation from "../middlewares/contact_validation.js";
+import contactValidation from "../validation/contact_validation.js";
 
 
 export default class ContactController {
   static async createContact(req, res) {
-      console.log(req.body);
-      // res.send("Whhhhhhhhhhhh");
-    console.log("**********");
     const auth = contactValidation(req.body);
    
     if (auth.error){
