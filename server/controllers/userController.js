@@ -38,10 +38,7 @@ export default class UserController {
        
         await newUser.save();
         
-      // Respond with token
-      console.log("++++++++++++++++++++++++++");
       const token = signToken(newUser);
-      console.log(token);
       res.status(200).json({token});
       
       } 

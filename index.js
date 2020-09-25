@@ -1,7 +1,8 @@
-
+import 'babel-polyfill';
 import express from 'express';
 import routes from './server/routes/index.js';
 import bodyParser from 'body-parser';
+
 
     const app = express();
     app.use(bodyParser.urlencoded({ extended: false }));
@@ -10,3 +11,5 @@ import bodyParser from 'body-parser';
     app.use("/api", routes);
     const port1 = process.env.port|| 5000;
 app.listen(port1,()=>console.log(`listeeeening on port ${port1} ...`));
+
+export default app;
