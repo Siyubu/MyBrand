@@ -42,7 +42,7 @@ export default class BlogController {
         const blogs = await db.blogModel.find({});
         return res.status(200).json(blogs);
       } 
-      catch 
+      catch (err)
       {
         res.status(400)
         res.send({ error: "No blog in the database!" })
@@ -53,7 +53,9 @@ export default class BlogController {
         try {
             const blog = await db.blogModel.findOne({ _id: req.params.id })
             res.send(blog)
-        } catch {
+        } 
+        catch(err)
+         {
             res.status(404)
             res.send({ error: "blog doesn't exist!" })
         }
@@ -73,7 +75,7 @@ export default class BlogController {
     
             await blog.save()
             res.send(blog)
-        } catch {
+        } catch (err) {
             res.status(404)
             res.send({ error: "Blog doesn't exist!" })
         }
@@ -83,7 +85,7 @@ export default class BlogController {
       try {
          await db.blogModel.deleteOne({ _id: req.params.id });
          res.status(204).send({message:"Blog is successfuly deleted"});
-      } catch {
+      } catch (err){
         res.status(404)
         res.send({ error: "Blog doesn't exist!" })
       }
@@ -103,7 +105,7 @@ export default class BlogController {
         blog.comments.push(comment);
         await blog.save()
         res.send(blog.comments)
-    } catch {
+    } catch (err){
         res.status(404)
         res.send({ error: "Blog doesn't exist!" })
     }
@@ -118,7 +120,7 @@ export default class BlogController {
         await blog.save()
         res.send(blog.comments)
     } 
-    catch {
+    catch (err) {
         res.status(404)
         res.send({ error: "Blog doesn't exist!" })
     }

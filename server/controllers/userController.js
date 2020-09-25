@@ -8,8 +8,8 @@ const signToken = user => {
   return JWT.sign({
     iss: 'CodeWorkr',
     sub: user.id,
-    iat: new Date().getTime(), // current time
-    exp: new Date().setDate(new Date().getDate() + 1) // current time + 1 day ahead
+    iat: new Date().getTime(), 
+    exp: new Date().setDate(new Date().getDate() + 1) 
   }, 'secret_token');
 }
 
@@ -38,10 +38,7 @@ export default class UserController {
        
         await newUser.save();
         
-      // Respond with token
-      console.log("++++++++++++++++++++++++++");
       const token = signToken(newUser);
-      console.log(token);
       res.status(200).json({token});
       
       } 
@@ -56,7 +53,6 @@ export default class UserController {
 }
 
 static async signIn (req, res, next)  {
-  // Generate token
   const user=db.userModel;
   const token = signToken(req.user);
   res.status(200).json({token });
