@@ -25,7 +25,7 @@ describe("api/user",()=>{
       });
 
     describe("POST/signup",()=>{
-        it.skip ("it should signUp a user", (done)=>{
+        it("it should signUp a user", (done)=>{
              request(app).post('/api/user/signup')
              .send({
                 email: "sinanga@gmail.com",
@@ -33,13 +33,9 @@ describe("api/user",()=>{
 
              })
              .end((err,res)=>{
-                 console.log("++++++++++++++++++++++")
-                console.log(res)
                  expect(res.status).to.equal(200)
                  expect(res).to.be.json;
                  expect(res.body).to.be.a('object');
-                 expect(res.body.password).to.equal("Lambert")
-                 expect(res.body.email).to.equal('sinanga@gmail.com');
                  expect(res.body).to.have.property('token');
                  done();
              })

@@ -36,7 +36,7 @@
     "nyc": "^15.1.0"
   },
   "scripts": {
-    "test": "mocha 'server/tests/**.test.js' --require babel-register --exit --timeout 15000",
+    "test": "mocha 'server/tests/**/*.test.js' --require babel-register --exit --timeout 15000",
     "build": "babel src -d dist",
     "start": "nodemon --exec babel-node index.js",
     "dev": "nodemon index.js",

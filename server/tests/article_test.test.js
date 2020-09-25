@@ -2,10 +2,13 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../index.js';
 import db from '../config/database.js';
+import path from  'path';
+import JWT from 'jsonwebtoken';
 
 chai.use(chaiHttp);
 var expect=chai.expect;
 var request=chai.request;
+
 
 describe("api/article",()=>{
     beforeEach((done)=>{
@@ -16,6 +19,7 @@ describe("api/article",()=>{
         user.save((err)=> {
             done()
         });
+
     });
     afterEach((done)=>{
         db.userModel.collection.drop();
@@ -49,32 +53,29 @@ describe("api/article",()=>{
 
 
 
-// describe("POST/ title and body  validation and are mendatory",()=>{
-//     it("User should post new Article if he provide proper token and articles'title and body and image url", done => {
-     
-//         request(app)
-//         .post('/api/user/signin')
-//              .send({
-//                  email: "siyubu@gmail.com",
-//                  password: "solange",
-//              })
-//         .end((err,res)=>{
-//           request(app)
-//           .post("/api/article/create")
-//           .set({'Authorization':res.body.token})
-//           .set('Content-Type', 'application/x-www-form-urlencoded')
-//           .field('title', "It is only the matter of focus")
-//           .field('body', "To start with Node.js integration testing, we will use Mocha and ChaiNPM packages")
-//           .attach('image','C:/Andela/Andela/MyBrand/MyBrand/ui/images/girl.JPG' )
-//           .end((err,response) => {
-//             console.log('&&&&&&&&&&&&&&&&&&&&&&')
-//             console.log(response)
-//             expect(response).to.have.status(200)
-//             done();
-//         }).timeout(50000)
-//     });
-// });
-// })
+describe("POST/ without valid token",()=>{
+    it("User should post new Article if he provide proper token and articles'title and body and image url", done => {
+         
+        var token=JWT.sign({
+            iss: 'CodeWorkr',
+            sub: '5f6df915167855296c71aef8',
+            iat: new Date().getTime(), 
+            exp: new Date().setDate(new Date().getDate() + 1) 
+          }, 'secret_token');
+        request(app)
+          .post("/api/article/create")
+          .set({'Authorization':token})
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .field('title', "It is only the matter of focus")
+          .field('body', "To start with Node.js integration testing, we will use Mocha and ChaiNPM packages")
+          .attach('image',path.join(__dirname,'assets/girl.JPG') )
+          .end((err,response) => {
+            expect(response).to.have.status(401)
+            done();
+        })
+    
+});
+})
 
 
 
@@ -246,11 +247,50 @@ describe("Get/ no article without  token", ()=>{
           request(app)
           .get("/api/article/")
           .end((err,response) => {
-          expect(response).to.have.status(401)
+          expect(response).to.have.status(401);
+          expect(response.body).to.be.a('object');
          done();
           })
     })
 })
 
+describe("PACTH/ no update without valid id", ()=>{
+    it("should fail to update the blog",(done)=>{
+        request(app)
+        .patch(`/api/article/${'5f6df915167855296c71aef8'}`)
+        .end((err,resp)=>{
+            expect(resp).to.have.status(401)
+            expect(resp.body).to.be.a('object');
+            done();
+
+        })
+    })
+})
+
+describe("DELETE/ no deletion without valid id", ()=>{
+    it("should fail to update the blog",(done)=>{
+        request(app)
+        .delete(`/api/article/${'5f6df915167855296c71aef8'}`)
+        .end((err,resp)=>{
+            expect(resp).to.have.status(401)
+            expect(resp.body).to.be.a('object');
+            done();
+
+        })
+    })
+})
+
+describe("COMMENT/ no comment without valid id", ()=>{
+    it("should fail to post a comment on the blog",(done)=>{
+        request(app)
+        .post(`/api/article/comment/${'5f6df915167855296c71aef8'}`)
+        .end((err,resp)=>{
+            expect(resp).to.have.status(401)
+            expect(resp.body).to.be.a('object');
+            done();
+
+        })
+    })
+})
 
 });
