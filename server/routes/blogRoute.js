@@ -6,11 +6,12 @@ const router = express.Router();
 var multipartMiddleware = multipart();
 
 /*****************Blog********************** */ 
-router.get('/',BlogController.getBlogs);
-router.get('/:id',BlogController.getOneBlog);
-router.post('/create',multipartMiddleware,BlogController.createBlog);
-router.post('/comment/:id',BlogController.blogComment);
-router.delete('/:id',BlogController.deleteBlog);
-router.patch('/:id',BlogController.updateBlog)
+
+router.get('/articles',BlogController.getBlogs);
+router.get('/article/:id',BlogController.getOneBlog);
+router.post('/article/create',multipartMiddleware,BlogController.createBlog);
+router.post('/article/comment/:id',BlogController.blogComment);
+router.delete('/article/:id',BlogController.deleteBlog);
+router.patch('/article/:id',BlogController.updateBlog)
 
   export default router

@@ -7,7 +7,7 @@ import contactRouter from "./route.js";
 import blogRouter from "./blogRoute.js"
 import userRouter from "./userRoute.js"
 
-router.use("/query", contactRouter);
-router.use("/article",passport.authenticate('jwt', { session : false }),blogRouter);
+router.use("/", contactRouter);
+router.use("/",passport.authenticate('jwt', { session : false }),blogRouter);
 router.use("/user", userRouter);
 export default router;
