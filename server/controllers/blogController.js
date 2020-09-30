@@ -118,7 +118,7 @@ export default class BlogController {
         const blog = await db.blogModel.findOne({ _id: req.params.id })
         blog.likes+=1;
         await blog.save()
-        res.send(blog.comments)
+        res.send(blog)
     } 
     catch (err) {
         res.status(404)

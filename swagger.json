@@ -176,7 +176,7 @@
                   {
                     "name": "blog_id",
                     "in": "path",
-                    "description": "delete an article",
+                    "description": "",
                     "required": true
                   },
 
@@ -190,12 +190,6 @@
                     "in": "formData",
                     "name": "body",
                     "type": "string",
-                    "required": false
-                  },
-                  {
-                    "in": "formData",
-                    "name": "image",
-                    "type": "file",
                     "required": false
                   }
 
@@ -261,13 +255,13 @@
         
 
 
-"/article/comment/{blog-id}":{
+"/article/comment/{blog_id}":{
 
     "post":{
         "tags":["Blogs"],
         "summary":"post a blog Comment",
         "description":"",
-        "consumes":["multipart/form-data"],
+        "consumes":["application/x-www-form-urlencoded"],
         "produces":["application/json"],
         "parameters":[
             {
@@ -302,7 +296,7 @@
     "201":{
         "description":"a blog comment created successfully",
         "shema":{
-            "$ref":"#/definitions/Blogs"
+            "$ref":"#/definitions/comment"
         }
 
     },
@@ -320,6 +314,51 @@
 },
 
 
+
+"/article/like/{blog_id}":{
+
+    "post":{
+        "tags":["Blogs"],
+        "summary":"Like a blog",
+        "description":"",
+        "consumes":["application/x-www-form-urlencoded"],
+        "produces":["application/json"],
+        "parameters":[
+            {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+
+          {
+            "name": "blog_id",
+            "in": "path",
+            "description": "",
+            "required": true
+          }
+
+],
+"responses":{
+    "201":{
+        "description":"a blog comment created successfully",
+        "shema":{
+            "$ref":"#/definitions/Blogs"
+        }
+
+    },
+    "400":{
+        "description":"Bad Request"
+    },
+    "401":
+    {
+        "description":"Unauthorized"
+    }
+}
+
+    }
+
+},
 
 
 
@@ -352,7 +391,7 @@
         "tags":["Queries"],
         "summary":"post a query",
         "description":"",
-        "consumes":["multipart/form-data"],
+        "consumes":["application/x-www-form-urlencoded"],
         "produces":["application/json"],
         "parameters":[
             
@@ -440,7 +479,7 @@
             "tags":["Users"],
             "summary":"user signup",
             "description":"",
-            "consumes":["multipart/form-data"],
+            "consumes":["application/x-www-form-urlencoded"],
             "produces":["application/json"],
             "parameters":[
                 
@@ -480,7 +519,7 @@
             "tags":["Users"],
             "summary":"user signup",
             "description":"",
-            "consumes":["multipart/form-data"],
+            "consumes":["application/x-www-form-urlencoded"],
             "produces":["application/json"],
             "parameters":[
                 
@@ -546,9 +585,16 @@
               "name": "imageURL"
             }
           }
-        },
-        "comment":[{"body": "string","name":"string"}]
+        }
 
+        }
+    },
+    "comment":{
+        "type":"object",
+        "required": ["name", "body"],
+        "properties": {
+            "body": "string",
+            "name":"string"
         }
     },
 
@@ -577,12 +623,10 @@
             "required": ["email", "password"],
             "properties": {
                   "email":{
-                    "type": "string",
-                    "format": "email"
+                    "type": "string"
                   },
                   "password":{
-                      "type":"string",
-                      "writeOnly": true
+                      "type":"string"
                   }
                 }
 
