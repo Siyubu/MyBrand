@@ -14,6 +14,9 @@ const port1 = process.env.PORT|| 5000;
     app.use("/api", routes);
     app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
    
-app.listen(port1,()=>console.log(`listeeeening on port ${port1} ...`));
+// app.listen(port1,()=>console.log(`listeeeening on port ${port1} ...`));
+app.listen(process.env.PORT || 5000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
 
 export default app;
