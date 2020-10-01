@@ -9,7 +9,7 @@
         }
 
     },
-    "host":"siyubu-brand.herokuapp.com",
+    "host":"siyubu-brand.herokuapp",
     "basePath":"/api",
     "tags":[
         {
