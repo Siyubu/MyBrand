@@ -1,8 +1,8 @@
 import 'babel-polyfill';
 import express from 'express';
-import routes from './server/routes/index.js';
+import routes from './routes/index.js';
 import bodyParser from 'body-parser';
-import swaggerDocument from './swagger.json';
+import swaggerDocument from '../swagger.json';
 import swaggerUi from 'swagger-ui-express';
 const port1 = process.env.port|| 5000;
 

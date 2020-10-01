@@ -82,7 +82,7 @@ describe("POST/ without valid token",()=>{
 describe("POST/not allowed to see article with no token",()=>{
     it("User should not see posted articles if he doesn't provide token", done => {
         request(app)
-        .get("/api/article/")        
+        .get("/api/articles/")        
         .end((err,res) => {
             expect(res).to.have.status(401)
             done();
@@ -232,7 +232,7 @@ describe("Get/ article", ()=>{
              })
         .end((err,res)=>{
           request(app)
-          .get("/api/article/")
+          .get("/api/articles/")
           .set({'Authorization':res.body.token})
           .end((err,response) => {
           expect(response).to.have.status(200)
@@ -245,7 +245,7 @@ describe("Get/ article", ()=>{
 describe("Get/ no article without  token", ()=>{
     it("User shouldn't read articles if no token",(done)=>{
           request(app)
-          .get("/api/article/")
+          .get("/api/articles/")
           .end((err,response) => {
           expect(response).to.have.status(401);
           expect(response.body).to.be.a('object');

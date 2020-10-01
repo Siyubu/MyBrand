@@ -1,0 +1,639 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "title":"Solange Iyubu's Brand",
+        "description":"Simple lady",
+        "version":"1.0.0",
+        "contact":{
+            "email":"siyubu@ymail.com"
+        }
+
+    },
+    "host":"localhost:5000",
+    "basePath":"/api",
+    "tags":[
+        {
+            "name":"Blogs",
+            "description":"Blog's operations"
+        },
+        {
+            "name":"Users",
+            "description":"User's operations"
+        },
+        {
+            "name":"Queries",
+            "description":"Queries'operations"
+        }
+    ],
+    "schemes": ["http","https"],
+    "paths":{
+
+        "/articles":{
+            "get":{
+                "tags":["Blogs"],
+                "summary":"getting all blogs",
+                "description":"",
+                "consumes":["multipart/form-data"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "type": "string"
+                  }
+        ],
+                "responses":{
+                    "200":{
+                        "description":"blogs retrieved successfully",
+                        "shema":{
+                            "$ref":"#/definitions/Blogs"
+                        }
+
+                    },
+                    "404":{
+                        "description":"Blog not found"
+                    }
+                }
+            }
+        },
+
+        "/article/create":{
+            "post":{
+                "tags":["Blogs"],
+                "summary":"post a blog",
+                "description":"",
+                "consumes":["multipart/form-data"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "type": "string"
+                  },
+
+                  {
+                    "in": "formData",
+                    "name": "title",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "in": "formData",
+                    "name": "body",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "in": "formData",
+                    "name": "image",
+                    "type": "file",
+                    "required": true
+                  }
+
+        ],
+        "responses":{
+            "201":{
+                "description":"a blog created successfully",
+                "shema":{
+                    "$ref":"#/definitions/Blogs"
+                }
+
+            },
+            "400":{
+                "description":"Bad Request"
+            },
+            "401":
+            {
+                "description":"Unauthorized"
+            }
+        }
+
+            }
+
+        },
+       
+
+
+
+
+        "/article/{blog_id}":{
+            "delete": {
+                "tags": ["Blogs"],
+                "summary": "delete existing blog",
+                "description": "delete an existing article if you are an admin ",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                      "name": "Authorization",
+                      "in": "header",
+                      "required": true,
+                      "type": "string"
+                    },
+                    {
+                      "name": "blog_id",
+                      "in": "path",
+                      "description": "delete an article",
+                      "required": true
+                    }
+                ],
+                "responses":{
+                    "204":{
+                        "description":"blog deleted successfully",
+                        "shema":{
+                            "$ref":"#/definitions/Blogs"
+                        }
+        
+                    },
+                    "400":{
+                        "description":"Bad Request"
+                    },
+                    "404":
+                    {
+                        "description":"Blog doesn't exist"
+                    },
+                    "401":{
+                        "description":"Unauthorized"
+                    }
+                }
+             },
+
+
+             "patch":{
+                "tags":["Blogs"],
+                "summary":"update a blog",
+                "description":"",
+                "consumes":["application/x-www-form-urlencoded"],
+                "produces":["application/json"],
+                "parameters":[
+                    {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "blog_id",
+                    "in": "path",
+                    "description": "",
+                    "required": true
+                  },
+
+                  {
+                    "in": "formData",
+                    "name": "title",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "in": "formData",
+                    "name": "body",
+                    "type": "string",
+                    "required": false
+                  }
+
+        ],
+        "responses":{
+            "201":{
+                "description":"a blog updated successfully",
+                "shema":{
+                    "$ref":"#/definitions/Blogs"
+                }
+
+            },
+            "400":{
+                "description":"Bad Request"
+            },
+            "401":
+            {
+                "description":"Unauthorized"
+            },
+            "404":{
+                "description":"Blog doesn't exist"
+            }
+
+        }
+    },
+
+
+    "get":{
+        "tags":["Blogs"],
+        "summary":"getting all blogs",
+        "description":"",
+        "consumes":["multipart/form-data"],
+        "produces":["application/json"],
+        "parameters":[
+            {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+
+          {
+            "name": "blog_id",
+            "in": "path",
+            "description": "delete an article",
+            "required": true
+          }
+],
+        "responses":{
+            "200":{
+                "description":"blogs retrieved successfully",
+                "shema":{
+                    "$ref":"#/definitions/Blogs"
+                }
+
+            },
+            "404":{
+                "description":"Blog doesn't exist"
+            }
+        }
+    }
+},
+        
+
+
+"/article/comment/{blog_id}":{
+
+    "post":{
+        "tags":["Blogs"],
+        "summary":"post a blog Comment",
+        "description":"",
+        "consumes":["application/x-www-form-urlencoded"],
+        "produces":["application/json"],
+        "parameters":[
+            {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+
+          {
+            "name": "blog_id",
+            "in": "path",
+            "description": "",
+            "required": true
+          },
+
+          {
+            "in": "formData",
+            "name": "body",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "required": true
+          }
+
+],
+"responses":{
+    "201":{
+        "description":"a blog comment created successfully",
+        "shema":{
+            "$ref":"#/definitions/comment"
+        }
+
+    },
+    "400":{
+        "description":"Bad Request"
+    },
+    "401":
+    {
+        "description":"Unauthorized"
+    }
+}
+
+    }
+
+},
+
+
+
+"/article/like/{blog_id}":{
+
+    "post":{
+        "tags":["Blogs"],
+        "summary":"Like a blog",
+        "description":"",
+        "consumes":["application/x-www-form-urlencoded"],
+        "produces":["application/json"],
+        "parameters":[
+            {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+
+          {
+            "name": "blog_id",
+            "in": "path",
+            "description": "",
+            "required": true
+          }
+
+],
+"responses":{
+    "201":{
+        "description":"a blog comment created successfully",
+        "shema":{
+            "$ref":"#/definitions/Blogs"
+        }
+
+    },
+    "400":{
+        "description":"Bad Request"
+    },
+    "401":
+    {
+        "description":"Unauthorized"
+    }
+}
+
+    }
+
+},
+
+
+
+"/queries":{
+    "get":{
+        "tags":["Queries"],
+        "summary":"getting Queries",
+        "description":"",
+        "consumes":["multipart/form-data"],
+        "produces":["application/json"],
+        "parameters":[],
+        "responses":{
+            "200":{
+                "description":"blogs retrieved successfully",
+                "shema":{
+                    "$ref":"#/definitions/Query"
+                }
+
+            },
+            "404":{
+                "description":"Query not found"
+            }
+        }
+    }
+},
+
+
+"/query/create":{
+    "post":{
+        "tags":["Queries"],
+        "summary":"post a query",
+        "description":"",
+        "consumes":["application/x-www-form-urlencoded"],
+        "produces":["application/json"],
+        "parameters":[
+            
+
+          {
+            "in": "formData",
+            "name": "names",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "subject",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "message",
+            "type": "string",
+            "required": true
+          }
+
+],
+"responses":{
+    "201":{
+        "description":"a blog created successfully",
+        "shema":{
+            "$ref":"#/definitions/Query"
+        }
+
+    },
+    "400":{
+        "description":"Bad Request"
+    }
+}
+
+    }
+
+},
+
+
+"/query/{query_id}":{
+    "delete": {
+        "tags": ["Queries"],
+        "summary": "delete existing query",
+        "description": "delete an existing query if you are an admin ",
+        "produces": ["application/json"],
+        "parameters": [
+           
+            {
+              "name": "query_id",
+              "in": "path",
+              "description": "delete a query",
+              "required": true
+            }
+        ],
+        "responses":{
+            "204":{
+                "description":"query deleted successfully",
+                "shema":{
+                    "$ref":"#/definitions/Query"
+                }
+
+            },
+            "400":{
+                "description":"Bad Request"
+            },
+            "404":
+            {
+                "description":"Blog doesn't exist"
+            }
+        }
+     }
+    },
+
+    "/user/signup":{
+        "post":{
+            "tags":["Users"],
+            "summary":"user signup",
+            "description":"",
+            "consumes":["application/x-www-form-urlencoded"],
+            "produces":["application/json"],
+            "parameters":[
+                
+    
+              {
+                "in": "formData",
+                "name": "email",
+                "type": "string",
+                "required": true
+              },
+              {
+                "in": "formData",
+                "name": "password",
+                "type": "string",
+                "required": true
+              }
+    
+    ],
+    "responses":{
+        "201":{
+            "description":"User created successfully",
+            "shema":{
+                "$ref":"#/definitions/Users"
+            }
+    
+        },
+        "400":{
+            "description":"Bad Request"
+        }
+    }
+    
+        }
+    
+    },
+    "/user/signin":{
+        "post":{
+            "tags":["Users"],
+            "summary":"user signup",
+            "description":"",
+            "consumes":["application/x-www-form-urlencoded"],
+            "produces":["application/json"],
+            "parameters":[
+                
+    
+              {
+                "in": "formData",
+                "name": "email",
+                "type": "string",
+                "required": true
+              },
+              {
+                "in": "formData",
+                "name": "password",
+                "type": "string",
+                "required": true
+              }
+    
+    ],
+    "responses":{
+        "201":{
+            "description":"User created successfully",
+            "shema":{
+                "$ref":"#/definitions/Users"
+            }
+    
+        },
+        "400":{
+            "description":"Bad Request"
+        },
+        "404":
+            {
+                "description":"User doesn't exist"
+            }
+        
+    }
+    
+        }
+    
+    }
+
+
+        
+    },
+    "definitions":{
+        "Blogs":{
+            "type":"object",
+            "required": ["title", "body", "image"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "body": {
+            "type": "string"
+          },
+        "image": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "type": "string",
+            "xml": {
+              "name": "imageURL"
+            }
+          }
+        }
+
+        }
+    },
+    "comment":{
+        "type":"object",
+        "required": ["name", "body"],
+        "properties": {
+            "body": "string",
+            "name":"string"
+        }
+    },
+
+    "Query":{
+        "type":"object",
+            "required": ["names", "subject", "email","message"],
+            "properties": {
+                "names": {
+                  "type": "string"
+                },
+                "subject": {
+                    "type": "string"
+                  },
+                  "email":{
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "message":{
+                      "type":"string"
+                  }
+                }
+
+    },
+    "Users":{
+        "type":"object",
+            "required": ["email", "password"],
+            "properties": {
+                  "email":{
+                    "type": "string"
+                  },
+                  "password":{
+                      "type":"string"
+                  }
+                }
+
+    }
+
+
+        
+
+    }
+}

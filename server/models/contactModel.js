@@ -19,7 +19,6 @@ const ContactSchema = new mongoose.Schema({
         required : true,
 	}
 });
-console.log("Contact Model");
 
 const contactModel = mongoose.model('Contact', ContactSchema );
 export default contactModel;

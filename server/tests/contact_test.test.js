@@ -214,7 +214,7 @@ describe("api/query",()=>{
 
 describe("GET /", ()=>{
 it("It should return all queries",(done)=>{
-    request(app).get('/api/query/')
+    request(app).get('/api/queries/')
     .end((err,res)=>{
      expect(res.status).to.equal(200);
      expect(res).to.be.json;
@@ -236,7 +236,7 @@ it("It should return all queries",(done)=>{
 describe("DELETE/:id", ()=>{
     it("it should delete a query",(done)=>{
         request(app)
-        .get('/api/query')
+        .get('/api/queries')
         .end((err,res)=>{
           request(app)
           .delete(`/api/query/${res.body[0]._id}`)

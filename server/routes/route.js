@@ -4,9 +4,9 @@ import ContactController from '../controllers/contactController.js';
 const router = express.Router();
 
 /*****************Query********************** */
-router.get('/',ContactController.getContacts);
-router.post('/create',ContactController.createContact);
-router.delete('/:id',ContactController.deleteContact);
+router.get('/queries',ContactController.getContacts);
+router.post('/query/create',ContactController.createContact);
+router.delete('/query/:id',ContactController.deleteContact);
 
   export default router
 
