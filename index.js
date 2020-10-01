@@ -4,7 +4,7 @@ import routes from './server/routes/index.js';
 import bodyParser from 'body-parser';
 import swaggerDocument from './swagger.json';
 import swaggerUi from 'swagger-ui-express';
-const port1 = process.env.port|| 5000;
+const port1 = process.env.PORT|| 5000;
 
     const app = express();
     
