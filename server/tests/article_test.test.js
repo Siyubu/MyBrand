@@ -41,7 +41,7 @@ describe("api/article",()=>{
               .send({
                 title: "It is only the matter of focus",
                 body: `To start with Node.js integration testing, we will use Mocha and ChaiNPM packages.`,
-                image:"this needs image url 1"
+                image: path.join(__dirname,'assets/girl.JPG')
             })
               .end((err,response) => {
                 expect(response).to.have.status(200)

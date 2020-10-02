@@ -15,7 +15,7 @@ cloudinary.config({
 });
 
 
-    mongoose.connect(process.env.PROD_DB_STRING, {
+    mongoose.connect(process.env.DEV_DB_TEST, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
