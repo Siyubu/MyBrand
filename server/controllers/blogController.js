@@ -11,8 +11,8 @@ export default class BlogController {
 
       }
       else{
-        db.cloudinary.uploader.upload(req.files.images.path, function(result) {
-         // console.log(auth)
+        db.cloudinary.uploader.upload(req.files.image.path, function(result) {
+       
   
           try 
           {
