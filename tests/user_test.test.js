@@ -1,8 +1,7 @@
 import chai from 'chai';
  import chaiHttp from 'chai-http';
-import db from '../config/database.js'
-import app from '../../index.js'
-import userController from '../controllers/userController.js'
+ import app from '../index.js';
+ import db from '../server/config/database';
 
 
 chai.use(chaiHttp);

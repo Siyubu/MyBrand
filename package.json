@@ -36,15 +36,15 @@
     "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "nodemon": "^2.0.4",
     "nyc": "^15.1.0"
   },
   "scripts": {
-    "test": "mocha 'server/tests/**/*.test.js' --require @babel/register --exit --timeout 15000",
-    "build": "babel server --out-dir dist",
+    "test": "cross-env NODE_ENV=testdb mocha 'tests/**/*.test.js' --require @babel/register --exit --timeout 15000",
+    "build": "cross-env NODE_ENV=production babel server --out-dir dist",
     "start": "npm run build && node ./dist/index.js",
-    "starting": "nodemon --exec babel-node --experimental-json-modules index.js",
-    "dev": "nodemon --experimental-json-modules index.js",
+    "dev": "nodemon --exec babel-node --experimental-json-modules index.js",
     "coverage": "nyc  --reporter=html --reporter=text npm test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },

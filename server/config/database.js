@@ -4,6 +4,7 @@ import contactModel from "../models/contactModel.js";
 import blogModel from "../models/blogModel.js";
 import userModel from "../models/userModel.js"
 import cloudinary from 'cloudinary';
+import AppConfig from './index.js'
 
 env.config();
 
@@ -15,7 +16,7 @@ cloudinary.config({
 });
 
 
-    mongoose.connect(process.env.PROD_DB_STRING, {
+    mongoose.connect(AppConfig.dbString, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
