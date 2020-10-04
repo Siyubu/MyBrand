@@ -1,13 +1,15 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../index.js';
-import db from '../config/database.js';
+import app from '../index.js';
+import db from '../server/config/database';
 import path from  'path';
 import JWT from 'jsonwebtoken';
 
 chai.use(chaiHttp);
 var expect=chai.expect;
 var request=chai.request;
+let articleId;
+let token
 
 
 describe("api/article",()=>{
@@ -77,9 +79,45 @@ describe("POST/ without valid token",()=>{
 });
 })
 
+describe("POST/ Valid Post",()=>{
+    it("User should post new Article", done => {
+        request(app)
+        .post('/api/user/signin')
+             .send({
+                 email: "siyubu@gmail.com",
+                 password: "solange",
+             })
+        .end((err,res)=>{
+        request(app)
+          .post("/api/article/create")
+          .set({'Authorization':res.body.token})
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .field('title', "It is only the matter of focus")
+          .field('body', "To start with Node.js integration testing, we will use Mocha and ChaiNPM packages")
+          .attach('image',path.join(__dirname,'assets/girl.JPG') )
+          .end((err,response) => {
+            articleId=response.body._id;
+            token=res.body.token;
+            expect(response).to.have.status(200)
+            expect(response.body).to.be.a('object');
+            expect(response.body).to.have.property('title');
+            expect(response.body).to.have.property('body');
+            expect(response.body).to.have.property('_id');
+            expect(response.body).to.have.property('likes');
+            expect(response.body).to.have.property('comments');
+            expect(response.body.comments).to.be.a('array');
+
+            done();
+        })
+    })
+    
+}).timeout(50000);
+})
 
 
-describe("POST/not allowed to see article with no token",()=>{
+
+
+describe("GET/not allowed to see article with no token",()=>{
     it("User should not see posted articles if he doesn't provide token", done => {
         request(app)
         .get("/api/articles/")        
@@ -89,6 +127,29 @@ describe("POST/not allowed to see article with no token",()=>{
         })
     });
 });
+
+describe("GET/ allowed to see article with a valid token",()=>{
+    it("User should see posted articles if he  provide valid token", done => {
+
+        request(app)
+        .post('/api/user/signin')
+                 .send({
+                     email: "siyubu@gmail.com",
+                     password: "solange",
+                 })
+                 .end((err,res)=>{
+                     request(app)
+                     .get("/api/articles/") 
+                     .set({'Authorization':res.body.token})
+                     .end((err,response) => {
+                         expect(response).to.have.status(200)
+                         expect(response.body).to.be.a('Array');
+                        
+                         done();
+                         })
+                        });
+                    });
+                });
 
 describe("POST/ no post without title",()=>{
     it("User should not post if he doesn't fill out title ", done => {
@@ -253,6 +314,28 @@ describe("Get/ no article without  token", ()=>{
           })
     })
 })
+describe("GET/ allowed to see article with a valid ID",()=>{
+    it("User should see posted article if he  provide valid ID", done => {
+
+        request(app)
+        .post('/api/user/signin')
+                 .send({
+                     email: "siyubu@gmail.com",
+                     password: "solange",
+                 })
+                 .end((err,res)=>{
+                     request(app)
+                     .get("/api/article/"+ articleId) 
+                     .set({'Authorization':res.body.token})
+                     .end((err,response) => {
+                         expect(response).to.have.status(200)
+                         expect(response.body).to.be.a('object');
+                        
+                         done();
+                         })
+                        });
+                    });
+                });
 
 describe("PACTH/ no update without valid id", ()=>{
     it("should fail to update the blog",(done)=>{
@@ -266,6 +349,94 @@ describe("PACTH/ no update without valid id", ()=>{
         })
     })
 })
+describe("PACTH/  update with valid id", ()=>{
+    it("should  update the blog",(done)=>{
+        request(app)
+        .post('/api/user/signin')
+                 .send({
+                     email: "siyubu@gmail.com",
+                     password: "solange",
+                 })
+                 .end((err,res)=>{
+         request(app)
+        .patch("/api/article/"+ articleId)
+        .set({'Authorization':res.body.token})
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .field('title', "Updating gave me hard time")
+        .end((err,resp)=>{
+            console.log("************************************ ");
+            console.log(resp.body)
+            
+            expect(resp).to.have.status(200)
+            expect(resp.body).to.be.a('object');
+            done();
+
+        })
+    })
+    })
+})
+describe("COMMENT/ no comment without valid id", ()=>{
+    it("should fail to post a comment on the blog",(done)=>{
+        request(app)
+        .post(`/api/article/comment/${'5f6df915167855296c71aef8'}`)
+        .end((err,resp)=>{
+            expect(resp).to.have.status(401)
+            expect(resp.body).to.be.a('object');
+            done();
+
+        })
+    })
+})
+describe("COMMENT/comment with valid id", ()=>{
+    it("should post a comment on the blog",(done)=>{
+        request(app)
+        .post('/api/user/signin')
+                 .send({
+                     email: "siyubu@gmail.com",
+                     password: "solange",
+                 })
+                 .end((err,res)=>{
+        request(app)
+        .post("/api/article/comment/"+ articleId)
+        .set({'Authorization':res.body.token})
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .field('body', "It is only the matter of focus")
+        .field('name', "Soso Bala")
+        .end((err,resp)=>{
+            expect(resp).to.have.status(200)
+            expect(resp.body).to.be.a('array');
+            done();
+
+        })
+    })
+    })
+})
+
+describe("LIKE/like with valid id", ()=>{
+    it("should like a blog",(done)=>{
+        request(app)
+        .post('/api/user/signin')
+                 .send({
+                     email: "siyubu@gmail.com",
+                     password: "solange",
+                 })
+                 .end((err,res)=>{
+        request(app)
+        .post("/api/article/like/"+ articleId)
+        .set({'Authorization':res.body.token})
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .end((err,resp)=>{
+            expect(resp).to.have.status(200)
+            done();
+
+        })
+    })
+    })
+})
+
+
 
 describe("DELETE/ no deletion without valid id", ()=>{
     it("should fail to update the blog",(done)=>{
@@ -280,17 +451,30 @@ describe("DELETE/ no deletion without valid id", ()=>{
     })
 })
 
-describe("COMMENT/ no comment without valid id", ()=>{
-    it("should fail to post a comment on the blog",(done)=>{
+describe("DELETE/ with valid id a blog have to be deleted", ()=>{
+    it("should delete a blog",(done)=>{
         request(app)
-        .post(`/api/article/comment/${'5f6df915167855296c71aef8'}`)
+        .post('/api/user/signin')
+                 .send({
+                     email: "siyubu@gmail.com",
+                     password: "solange",
+                 })
+                 .end((err,res)=>{
+        request(app)
+        .delete(`/api/article/${articleId}`)
+        .set({'Authorization':res.body.token})
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
         .end((err,resp)=>{
-            expect(resp).to.have.status(401)
-            expect(resp.body).to.be.a('object');
+            expect(resp).to.have.status(204)
             done();
 
         })
     })
+    })
 })
+
+
+
 
 });
