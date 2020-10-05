@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang= "en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Andela Bootcamp Allocation Project</title>
+        <link href="../../css/myBrand.css" rel='stylesheet'  type='text/css'>
+        <link href="../../css/admin-panel-css/blogger.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <nav id="navbar" class="nav">
+            <ul class="nav-list">
+                <li><a href="#blogger-statistics">Dashboard</a></li>
+                <li><a href="./Admin_create_blog.html">Create Blogs</a></li>
+                <li><a href="./Admin_queries.html">Queries</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li><a href='../home.html'><strong>Back to home</strong> </a></li>
+                <li><a href="#">LogOut</a></li>
+                </ul>
+            </nav>
+
+            
+
+                <ul id="blogger-statistics" class="fa-ul ">
+                    <li class='fa-list'>
+                        
+                         <i class="fa fa-thumbs-up" style="font-size:44px"></i>
+
+                        <h4>
+                        <numb id="total-likes"></numb>
+                        <p>Blog's Like</p>
+                       </h4>
+
+                    </li>
+
+                    <li class='fa-list'>
+                            <i class="fa fa-share-square-o" style="font-size:44px"></i>
+
+                        <h4>
+                            <numb id="total-shares"></numb>
+                            <p>Shares</p>
+                           </h4>
+                    </li>
+
+                    <li class='fa-list'>
+                       
+                            <i class="fa fa-comment-o" style="font-size:44px"></i>
+
+                        <h4>
+                            <numb id="total-comments"></numb>
+                            <p>Comment</p>
+                           </h4> 
+                    </li>
+
+                    <li class='fa-list'>
+                            <i class="fa fa-user" style="font-size:44px"></i>
+                        <h4>
+                            <numb id="total-contact"></numb>
+                            <p>Contacts</p>
+                           </h4> 
+                    </li>
+
+                  </ul>
+
+
+            <section id="blog-section" class="blog-section">
+                <h3> 
+                   
+                    <hr>
+                    The Blog List
+
+                </h3>
+            <div class="blog-grid" id="blog-grid">
+                <a href="./blog/html/first job.html" target="blank"  class="blog blog-tile">
+                    <img class="blog-image"  src="../../images/job.JPG"  alt="Blog">
+                <p class="blog-title">Land you first job in Software programming without experience</p>
+                <div class="icon">
+                    <button style="font-size:10px">12 Likes <i class="fa fa-thumbs-up"></i></button>
+                    <button style="font-size:10px">6 Shares <i class="fa fa-share-square-o"></i></button>
+                    <button style="font-size:10px">5 Comment <i class="fa fa-comment-o"></i></button>
+                    </div>
+            </a>
+                    
+                           
+                            </div>
+                        </section>
+
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-storage.js"></script>
+                        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+                        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                        <script src="../../js/admin-js/blogger.js"></script>
+                    </body>
+                    </html>
