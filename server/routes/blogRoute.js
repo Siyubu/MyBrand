@@ -9,11 +9,11 @@ var multipartMiddleware = multipart();
 
 /*****************Blog********************** */ 
 
-router.get('/articles',passport.authenticate('jwt', { session : false }),BlogController.getBlogs);
-router.get('/article/:id',passport.authenticate('jwt', { session : false }),BlogController.getOneBlog);
+router.get('/articles',BlogController.getBlogs);
+router.get('/article/:id',BlogController.getOneBlog);
 router.post('/article/create',passport.authenticate('jwt', { session : false }),multipartMiddleware,BlogController.createBlog);
-router.post('/article/comment/:id',passport.authenticate('jwt', { session : false }),BlogController.blogComment);
-router.post('/article/like/:id',passport.authenticate('jwt', { session : false }), BlogController.bloglikes)
+router.post('/article/comment/:id',BlogController.blogComment);
+router.post('/article/like/:id', BlogController.bloglikes)
 router.delete('/article/:id',passport.authenticate('jwt', { session : false }),BlogController.deleteBlog);
 router.patch('/article/:id',passport.authenticate('jwt', { session : false }),BlogController.updateBlog)
 

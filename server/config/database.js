@@ -27,4 +27,4 @@ db.once('open', () => {
   console.log('Mongoose connected')
 });
 
-export default { contactModel,blogModel,userModel,cloudinary};
+export default { contactModel,blogModel,userModel,cloudinary,db};
