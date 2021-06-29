@@ -17,7 +17,7 @@ function login(event) {
     const formData = new FormData();
     formData.append('password', password);
     formData.append('email', email);
-    fetch(`${BASE_URL}/user/login`, {method: "POST", body: formData})
+    fetch(`${BASE_URL}/user/signin`, {method: "POST", body: formData})
         .then(response => {
             if (response.ok) {
                 response.json().then(({data}) => {
@@ -33,8 +33,7 @@ function login(event) {
             }
         })
         .catch(function (error) {
-            loader.style.display = "none";
-            document.getElementByclass("alert")[0].style.display = "inline-block";
+          document.getElementsByClassName("alert")[0].style.display = "inline-block";
             loginBtn.innerText = "Login";
         });
 }
