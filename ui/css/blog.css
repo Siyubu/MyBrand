@@ -12,18 +12,14 @@ body{
 }
 
 .projects-section-header {
-    /* max-width: 640px; */
     text-align: center;
     margin-top: 60px;
-    /* margin: 0 auto 6rem auto;
-    border-bottom: 0.2rem solid var(--main-white); */
 }
  
 .blog-list {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* margin: 10px; */
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
@@ -92,6 +88,10 @@ hr
         font-size: 1.8rem;
        
     } 
+      .blog-section{
+        margin-top: 210px;
+
+    }
   
     }
     @media only screen and (min-width: 1000px)
@@ -102,3 +102,11 @@ hr
         } 
     
     }
+
+    @media only screen and (max-width: 600px){
+        .blog-section{
+            margin-top: 210px;
+    
+        }
+    }
+    
