@@ -34,15 +34,25 @@ body{
     cursor: pointer;
 }
 
-@media (min-width: 480px){
-    .login {
-        padding: 2.5rem;
-    }
-}
-
 .alert{
     text-align: center;
     padding: 10px;
     color: red;
     display: none
+}
+
+@media (min-width: 480px){
+    .login {
+        padding: 2.5rem;
+        text-align: center;
+        align-content: center;
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .login{
+        margin: 100px 0px 0px 80px;
+        font-size: 1.3rem;
+    }
 }

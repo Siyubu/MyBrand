@@ -16,7 +16,7 @@
     background-image: url('../images/soso.JPG');
     background-repeat: no-repeat;
     background-size:100% 100%;
-     background-position: center ;
+    background-position: center ;
 }
 
 #introduction{
@@ -54,5 +54,11 @@
         right: 30%;
         bottom: 43%;
         line-height: 0.8rem;
+    }
+}
+@media only screen and (max-width: 600px){
+    .home{
+        background-size:auto
+
     }
 }
