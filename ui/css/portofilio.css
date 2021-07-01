@@ -55,4 +55,9 @@ a {
     padding: 1rem 0.3rem
 } 
 
+@media only screen and (max-width: 600px){
+    .project-section{
+        margin-top: 210px;
 
+    }
+}
